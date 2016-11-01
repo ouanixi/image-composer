@@ -5,3 +5,4 @@ __pycache__/
 cv.sublime-project
 cv.sublime-workspace
 venv/
+dataset/
