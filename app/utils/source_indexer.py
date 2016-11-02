@@ -6,12 +6,13 @@ import os
 
 import feature_extractor
 
-DB_PATH = "/home/ouanixi/Work/image-composer/dataset/out_natural_1k/"
+DB_PATH = "/home/ouanixi/Work/image-composer/dataset/images/"
 INDEX_PATH = "/home/ouanixi/Work/image-composer/dataset/index/"
 
 
 def convertImage(path, length):
     image = cv2.imread(path)
+    image = cv2.GaussianBlur(image,(21,21),0)
     image = cv2.resize(image, (length, length), interpolation=cv2.INTER_AREA)
     cv2.imwrite(INDEX_PATH + ntpath.basename(path), image)
     return image
