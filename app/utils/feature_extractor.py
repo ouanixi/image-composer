@@ -1,4 +1,5 @@
 import cv2
+import HistogramHandler
 
 
 def getAverageColor(image, index, bins):
@@ -9,10 +10,11 @@ def getAverageColor(image, index, bins):
         x += (int(histogram[i]) * i)
     return x / (w * h)
 
-
 def extractFeature(image):
     entry = {}
     entry["b"] = getAverageColor(image, 0, 256)
     entry["g"] = getAverageColor(image, 1, 256)
     entry["r"] = getAverageColor(image, 2, 256)
+    entry["histogram"] = HistogramHandler.calc_histogram(image).tolist()
     return entry
+
