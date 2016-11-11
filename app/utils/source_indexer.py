@@ -6,6 +6,7 @@ import os
 
 import feature_extractor
 
+
 DB_PATH = "/home/ouanixi/Work/image-composer/dataset/images/"
 INDEX_PATH = "/home/ouanixi/Work/image-composer/dataset/index/"
 

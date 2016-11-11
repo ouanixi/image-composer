@@ -6,7 +6,6 @@ import feature_extractor
 
 INDEX_PATH = "/home/ouanixi/Work/image-composer/dataset/index/"
 
-
 def readIndex():
     json_data = open(INDEX_PATH + "histogram.index").read()
     return json.loads(json_data)
