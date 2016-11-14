@@ -3,6 +3,11 @@ import cv2
 import math
 import sys
 import feature_extractor
+import HistogramHandler
+import numpy as np
+
+
+
 
 INDEX_PATH = "/home/ouanixi/Work/image-composer/dataset/index/"
 
@@ -29,6 +34,10 @@ def calcDistance(fts1, fts2, vectors):
     for vec in vectors:
         distance += math.pow(fts1[vec] - fts2[vec], 2)
     return math.sqrt(distance)
+    # distance = HistogramHandler.calc_distance(fts1["histogram"],
+    #                                           np.asarray(fts2["histogram"], dtype='float32'),
+    #                                           method=cv2.HISTCMP_CHISQR)
+    # return distance
 
 
 def getIndexImage(fts, index, vectors):
@@ -70,4 +79,4 @@ def main(inputImagePath, tileSize):
 
     print "Finished processing of image"
 
-    cv2.imwrite("Result2.jpg", inputImage)
+    cv2.imwrite("Chi.jpg", inputImage)
