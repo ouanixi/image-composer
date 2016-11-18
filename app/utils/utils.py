@@ -20,6 +20,11 @@ def get_residual_sum_of_squares(predictions, outcome):
     RSS = (residuals * residuals).sum()
     return RSS
 
+def get_accuracy(predictions, outcome):
+    residuals = predictions - outcome
+    correct = len([x for x in residuals if x == 0])
+    return 100 * (correct / len(predictions))
+
 
 def shuffle_lines(file):
     import csv
