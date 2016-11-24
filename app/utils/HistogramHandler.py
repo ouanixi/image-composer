@@ -29,7 +29,7 @@ def calc_histogram(image):
     # hist = cv2.calcHist(image_hsv, [0, 1], None, [180, 256], [0, 180, 0, 256])
     # #http://stackoverflow.com/questions/9390592/drawing-histogram-in-opencv-python
     # cv2.normalize(hist, hist, 0, 255, cv2.NORM_MINMAX)
-    hist = cv2.calcHist([image], [0, 1, 2], None, [32, 32, 32],
+    hist = cv2.calcHist([image], [0, 1, 2], None, [8, 8, 8],
                         [0, 256, 0, 256, 0, 256])
     hist = cv2.normalize(hist, hist).flatten()
     return hist

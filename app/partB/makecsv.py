@@ -21,7 +21,7 @@ def create_training_set(man_path, nat_path):
     feature_list = []
     for name in man_image_names:
         img = cv2.imread(name)
-        edges = feature_extractor.getHog(img)
+        edges = feature_extractor.getHoughTransformLines(img)
         img_dict = dict()
         for i in xrange(len(edges)):
             pix = 'pix_' + str(i)
@@ -31,7 +31,7 @@ def create_training_set(man_path, nat_path):
 
     for name in nat_image_names:
         img = cv2.imread(name)
-        edges = feature_extractor.getHog(img)
+        edges = feature_extractor.getHoughTransformLines(img)
         img_dict = dict()
         for i in xrange(len(edges)):
             pix = 'pix_' + str(i)
@@ -66,5 +66,5 @@ def make_training_csv(man, nat, name):
 
 
 if __name__ == '__main__':
-    make_training_csv("manmade_test.txt", "natural_test.txt", "hog_only_test.csv")
-    make_training_csv("manmade_training.txt", "natural_training.txt", "hog_only_train.csv")
+    make_training_csv("manmade_test.txt", "natural_test.txt", "hough_test.csv")
+    make_training_csv("manmade_training.txt", "natural_training.txt", "hough_train.csv")

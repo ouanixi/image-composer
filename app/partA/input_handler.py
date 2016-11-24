@@ -9,9 +9,9 @@ import main
 # except Exception as e:
 #     print str(e)
 
-imagefile = '/home/ouanixi/Work/image-composer/dataset/Mona_Lisa.jpg'
+imagefile = '/home/ouanixi/Work/image-composer/dataset/mosaic_target2.jpg'
 output_size = '40x40'
-window_size = 50
+window_size = 20
 
 height = int(output_size[0])
 width = int(output_size[1])

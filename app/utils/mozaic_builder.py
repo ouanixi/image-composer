@@ -18,6 +18,7 @@ def readIndex():
 
 def preparInputImage(path, tileSize):
     i = cv2.imread(path)
+    i = cv2.resize(i, (2000, 1200), interpolation=cv2.INTER_AREA)
     (h, w, _) = i.shape
     i = cv2.resize(i, (w / tileSize * tileSize, h / tileSize * tileSize))
     return i
@@ -30,14 +31,14 @@ def preparePatch(path, tileSize):
 
 
 def calcDistance(fts1, fts2, vectors):
-    distance = 0
-    for vec in vectors:
-        distance += math.pow(fts1[vec] - fts2[vec], 2)
-    return math.sqrt(distance)
-    # distance = HistogramHandler.calc_distance(fts1["histogram"],
-    #                                           np.asarray(fts2["histogram"], dtype='float32'),
-    #                                           method=cv2.HISTCMP_CHISQR)
-    # return distance
+    # distance = 0
+    # for vec in vectors:
+    #     distance += math.pow(fts1[vec] - fts2[vec], 2)
+    # return math.sqrt(distance)
+    distance = HistogramHandler.calc_distance(fts1["histogram"],
+                                              np.asarray(fts2["histogram"], dtype='float32'),
+                                              method=cv2.HISTCMP_KL_DIV)
+    return distance
 
 
 def getIndexImage(fts, index, vectors):
@@ -79,4 +80,4 @@ def main(inputImagePath, tileSize):
 
     print "Finished processing of image"
 
-    cv2.imwrite("Chi.jpg", inputImage)
+    cv2.imwrite("HISTCMP_KL_DIV.jpg", inputImage)

@@ -56,7 +56,7 @@ def getHoughTransformLines(img):
     if lines is not None:
         length = len(lines)
 
-    return length
+    return [length]
 
 
 def getHog(img):
@@ -67,11 +67,21 @@ def getHog(img):
     return hog_image.flatten()
 
 
+def combine_hog_lines(img):
+    features = np.append(getHog(img), getHoughTransformLines(img))
+    return features
+
+
+def combine_hog_corners(img):
+    features = np.append(getHog(img), harris_corner_detection(img))
+    return features
+
+
 def extractFeature(image):
     entry = {}
     entry["b"] = getAverageColor(image, 0, 256)
     entry["g"] = getAverageColor(image, 1, 256)
     entry["r"] = getAverageColor(image, 2, 256)
-    # entry["histogram"] = HistogramHandler.calc_histogram(image)
+    entry["histogram"] = HistogramHandler.calc_histogram(image)
     return entry
 
